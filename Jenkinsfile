@@ -2,8 +2,8 @@ pipeline {
     agent any
     tools { nodejs "NodeJS" }
     environment {
-        DOCKER_IMAGE = "Ecommerce"
-        CONTAINER_NAME = "MyApp"
+        DOCKER_IMAGE = "ecommerce"
+        CONTAINER_NAME = "myapp"
         // Specify the port you want to use
         PORT = "80"
     }
