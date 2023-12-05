@@ -1,77 +1,18 @@
-# AWS - AMAZON LINUX 2 SETUP
+# Project Title
 
-#!/bin/bash
+Brief description or introduction to your project.
 
-# Update the system packages
-sudo yum update -y
+## Table of Contents
 
-# Install OpenJDK 8
-sudo yum install java-1.8.0-openjdk -y
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
 
-# Install OpenJDK 11 using Amazon Linux Extras
-sudo amazon-linux-extras install java-openjdk11 -y
+## Installation
 
-# Install OpenJDK 11 development package
-sudo yum install java-11-openjdk-devel -y
+Describe how to install your project or provide instructions on how to set it up.
 
-# Configure alternatives for Java versions and select OpenJDK 11
-sudo alternatives --config java
-# (Choose the appropriate option, in this case, option 2)
-
-# Install Node Version Manager (NVM)
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
-
-# Activate NVM
-. ~/.nvm/nvm.sh
-
-# Install Node.js version 16
-nvm install 16
-
-# Update the system packages again
-sudo yum update -y
-
-# Install Git
-sudo yum install git -y
-
-# Display information about the operating system
-cat /etc/os-release
-
-# Download and configure Jenkins repository
-sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
-
-# Alternatively, use these commands to download and configure Jenkins repository
-# sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
-# sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
-
-# Upgrade installed packages
-sudo yum upgrade -y
-
-# Install OpenJDK 11 (if not already installed)
-sudo yum install java-11-openjdk -y
-
-# Install Jenkins
-sudo yum install jenkins -y
-
-# Reload the systemd manager configuration
-sudo systemctl daemon-reload
-
-# Enable Jenkins to start on boot
-sudo systemctl enable jenkins
-
-# Start Jenkins service
-sudo systemctl start jenkins
-
-# Check the status of Jenkins service
-sudo systemctl status jenkins
-
-# Install Docker
-sudo amazon-linux-extras install docker
-sudo service docker start
-
-# Add ec2-user and Jenkins to the docker group
-sudo usermod -aG docker ec2-user
-sudo usermod -aG docker jenkins
-
-# Restart Jenkins to apply group changes
-sudo service jenkins restart
+```bash
+# Example installation command
+npm install
