@@ -10,9 +10,6 @@ COPY ./ /usr/local/app/
 # Install the dependencies
 RUN npm install
 
-# Generate the build of the application
-RUN npm run build
-
 # Use official nginx image as the base image
 FROM nginx:latest
 
