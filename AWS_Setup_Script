@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Update the system packages
 sudo yum update -y
 
@@ -41,7 +43,7 @@ sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 # sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 
 # Upgrade installed packages
-sudo yum upgrade
+sudo yum upgrade -y
 
 # Install OpenJDK 11 (if not already installed)
 sudo yum install java-11-openjdk -y
@@ -61,9 +63,13 @@ sudo systemctl start jenkins
 # Check the status of Jenkins service
 sudo systemctl status jenkins
 
-
-sudo yum update -y
+# Install Docker
 sudo amazon-linux-extras install docker
-sudo usermod -aG docker ec2-user
 sudo service docker start
 
+# Add ec2-user and Jenkins to the docker group
+sudo usermod -aG docker ec2-user
+sudo usermod -aG docker jenkins
+
+# Restart Jenkins to apply group changes
+sudo service jenkins restart
