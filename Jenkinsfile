@@ -2,7 +2,8 @@ pipeline {
     agent any
     tools { nodejs "NodeJS" }
     environment {
-        DOCKER_IMAGE = "MyApp"
+        DOCKER_IMAGE = "Ecommerce"
+        CONTAINER_NAME = "MyApp"
         // Specify the port you want to use
         PORT = "80"
     }
@@ -39,15 +40,15 @@ pipeline {
             steps {
                 // Stop and remove existing container if it exists
                 script {
-                    sh "docker stop \$(docker ps -q --filter 'ancestor=${DOCKER_IMAGE}') || true"
-                    sh "docker rm \$(docker ps -aq --filter 'ancestor=${DOCKER_IMAGE}') || true"
+                    sh "docker stop ${CONTAINER_NAME} || true"
+                    sh "docker rm ${CONTAINER_NAME} || true"
                 }
 
                 // Build Docker image
                 sh "docker build -t ${DOCKER_IMAGE} ."
 
                 // Run Docker container
-                sh "docker run -p ${PORT}:80 ${DOCKER_IMAGE}"
+                sh "docker run -p ${PORT}:80 --name ${CONTAINER_NAME} ${DOCKER_IMAGE}"
             }
         }
     }
