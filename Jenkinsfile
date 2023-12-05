@@ -5,7 +5,7 @@ pipeline {
         stage('Source') {
             steps {
                 // Get  code from a GitHub repository
-                git 'https://github.com/mdjawad0/estore-admin-app.git'
+                git 'https://github.com/mdjawad0/Ecommerce-React-AWS.git'
 
                 // Run npm install
                 sh "npm install"
