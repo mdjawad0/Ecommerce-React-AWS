@@ -1,11 +1,11 @@
 pipeline {
     agent any
-    tools {nodejs "NodeJS"}
+    tools { nodejs "NodeJS" }
     stages {
         stage('Source') {
             steps {
-                // Get  code from a GitHub repository
-                git 'https://github.com/mdjawad0/Ecommerce-React-AWS.git'
+                // Get code from a GitHub repository
+                git 'https://github.com/mdjawad0/estore-admin-app.git'
 
                 // Run npm install
                 sh "npm install"
@@ -24,9 +24,9 @@ pipeline {
 
         stage('Build') {
             steps {
-                // Run ng build command
-                sh "npm run ng build"
-                echo 'Test Stage Finished'
+                // Run Vite build command
+                sh "npm run build"
+                echo 'Build Stage Finished'
             }
         }
     }
